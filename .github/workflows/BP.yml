@@ -16,4 +16,4 @@ jobs:
         with:
           context: app
           push: true
-          tags: ghcr.io/${{ github.actor }}/micronaut-app:1.0-${{ github.sha }},ghcr.io/${{ github.actor }}/micronaut-app:latest
+          tags: ghcr.io/silviavd02/micronaut-app:1.0-${{ github.sha }},ghcr.io/silviavd02/micronaut-app:latest
