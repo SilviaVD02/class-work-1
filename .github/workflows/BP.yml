@@ -11,10 +11,10 @@ jobs:
           registry: ghcr.io
           username: silviavd02
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build 
-      - name : Push
-      
+      - name: Build and push
+        uses: docker/build-push-action@v3
         with:
           context: .
           push: true
           tags: ghcr.io/silviavd02/micronaut-app:1.0-${{ github.sha }},ghcr.io/silviavd02/micronaut-app:latest
+
