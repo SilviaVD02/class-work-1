@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Install python and pip
 RUN apt-get update -y
-RUN apt-get install -y python3 python3-pip python3-dev build-essential
+RUN apt-get install -y python3 pip3
 
 # Install Python modules needed by the Python app
 COPY requirements.txt /src/requirements.txt
