@@ -12,9 +12,10 @@ jobs:
           username: silviavd02
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
-          context: /class-work-1/
+          context: .
+          file: ./Dockerfile
           push: true
-          tags: ghcr.io/silviavd02/micronaut-app:1.0-${{ github.sha }},ghcr.io/silviavd02/micronaut-app:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
 
