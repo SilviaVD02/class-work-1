@@ -1,0 +1,26 @@
+name: SonarCloud Merge-Pull Scan
+
+on:
+  push:
+    branches: "main" 
+  pull_request:
+    branches:  "main" 
+  workflow_dispatch:
+
+jobs:
+
+ SonarCloudTest:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+
