@@ -54,7 +54,7 @@ jobs:
           image-ref: "my_first_app"
           scan-ref: .  #its the default code
           exit-code: 1
-          timeout: 3
+          timeout: 3m0s
           vuln-type: "os,library" #optional, default
           severity: "CRITICAL,HIGH"        
         
