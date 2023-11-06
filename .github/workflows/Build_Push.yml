@@ -18,9 +18,11 @@ jobs:
       - name: Build an image
         run: docker build -t "my_first_app" .
         
-      - name: Tag and Push an image to DockerHub
-        run: docker tag my_first_app silviavd02/dev-ops-exercises:pip-app1 |
-             docker push silvavd02/dev-ops-exercises:pip-app1
+      - name: Tag an image 
+        run: docker tag my_first_app silviavd02/dev-ops-exercises:pip-app1 
+
+      - name: Push Image to Dockerhub  
+        run: docker push silvavd02/dev-ops-exercises:pip-app1
 
 
 
