@@ -46,20 +46,24 @@ jobs:
     
       - name: Build an image
         run: docker build -t "my_first_app" .
+
+
+      - name: AquaSec Trivy
+        uses: aquasecurity/trivy-action@0.13.1
+        with:
+          image-ref: "my_first_app"
+          scan-ref: .  #its the default code
+          exit-code: 1
+          timeout: 3
+          vuln-type: "os,library" #optional, default
+          severity: "CRITICAL,HIGH"        
         
       - name: Tag an image 
         run: docker tag my_first_app silvavd02/dev-ops-exercises:latest
 
       - name: Push Image to Dockerhub  
         run: docker push silvavd02/dev-ops-exercises:latest
-
-
-
-
-
-
-
-        
+   
 
 
 
