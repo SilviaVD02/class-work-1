@@ -40,10 +40,6 @@ jobs:
     needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
     container: python:3
     steps:
-    
-     - name: Install Dependencies
-       run: python install --upgrade python
-       
      - name: Unit Test app-test.py
        run: python3 -m unittest ./src/app-test.py 
       
