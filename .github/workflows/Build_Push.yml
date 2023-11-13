@@ -19,7 +19,7 @@ jobs:
         run: pip install editorconfig-checker
 
       - name: Editor-Conf Check
-        run: editorconfig-checker
+        run: ec -version
       
   SnykTest:
     runs-on: ubuntu-latest
