@@ -17,6 +17,9 @@ jobs:
   Editor-Conf-Check:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
       - name: Install Editor-Conf-Checker
         run: pip install editorconfig-checker
 
@@ -26,11 +29,11 @@ jobs:
   MarkdownFilesCheck:
     runs-on: ubuntu-latest
     steps:
-      - name: Install CLI-Markdown
-        run:  npm uninstall -g create-react-app | npx create-react-app my-app | npm start
+      - name: Checkout code
+        uses: actions/checkout@v3
         
       - name: Markdown Files Check
-        run: npm run test
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
 
   SnykTest:
     runs-on: ubuntu-latest
