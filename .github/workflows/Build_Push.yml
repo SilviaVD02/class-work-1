@@ -64,13 +64,11 @@ jobs:
         steps:
           - name: DB Migrations FlywayCheck
             uses: red-gate/flyway-hub-migration-test@v4
-            env:
-               access token : ${FLYWAY_HUB_ACCESS_TOKEN}
             with:
               # The name of the Flyway Hub project to test
               projectName: class-work-1
               # The database engine that migrations should run against
-              engine: mysql
+              engine: SQL Server (v2019)
               # The directories containing the migration scripts to run
               migrationDirs: sql
                     
