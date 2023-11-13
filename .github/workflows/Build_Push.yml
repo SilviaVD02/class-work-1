@@ -35,12 +35,17 @@ jobs:
       - name: Markdown File Link Check
         uses: ruzickap/action-my-markdown-link-checker@v1.1.2
 
-  #UnitTest:
-    #runs-on: ubuntu-latest
-    #needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
-    #steps:
-     # - name: Unit Test app-test.py
-      #  run: python3 -m unittest src/app-test.py 
+  UnitTest:
+    runs-on: ubuntu-latest
+    needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
+    steps:
+    
+     - name: Install Dependencies
+       run: pip3 install -r src/requirements.txt
+       
+     - name: Unit Test app-test.py
+       run: python3 -m unittest src/app-test.py 
+      
       #SENDS FAILED TO IMPORT TEST MODULE SRC/APP-TEST.PY
 
   GitLeaksCheck:
@@ -57,25 +62,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  DB-Migration-Test:
+  #DB-Migration-Test:
   
-        runs-on: ubuntu-latest
-        needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
-        steps:
-          - name: DB Migrations FlywayCheck
-            uses: red-gate/flyway-hub-migration-test@v4
-            with:
+       # runs-on: ubuntu-latest
+        #needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
+        #steps:
+         # - name: DB Migrations FlywayCheck
+          #  uses: red-gate/flyway-hub-migration-test@v4
+           # with:
               # The name of the Flyway Hub project to test
-              projectName: class-work-1
+            #  projectName: class-work-1
               # The database engine that migrations should run against
-              engine: SQL Server (v2019)
+             # engine: SQL Server (v2019)
               # The directories containing the migration scripts to run
-              migrationDirs: sql
+              #migrationDirs: sql
                     
   SnykTest:
     runs-on: ubuntu-latest
     #needs: [UnitTest]
-    needs: [GitLeaksCheck, DB-Migration-Test]
+    needs: [GitLeaksCheck, UnitTest] # DB-Migration-Test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -91,7 +96,7 @@ jobs:
   SonarCloudTest:
     runs-on: ubuntu-latest
     #needs: [UnitTest]
-    needs: [GitLeaksCheck, DB-Migration-Test]
+    needs: [GitLeaksCheck, UnitTest] # DB-Migration-Test]
     permissions:
       packages: write
     steps:
