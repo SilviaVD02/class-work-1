@@ -32,12 +32,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Markdown Files SEO Check
+      - name: Markdown File Link Check
         uses: ruzickap/action-my-markdown-link-checker@v1.1.2
+
+  UnitTest:
+    runs-on: ubuntu-latest
+    needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
+    steps:
+      - name: Unit Test app-test.py
+        run: python3 -m unittest src/app_test.py
 
   SnykTest:
     runs-on: ubuntu-latest
-    needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
+    needs: [UnitTest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -52,7 +59,7 @@ jobs:
           
   SonarCloudTest:
     runs-on: ubuntu-latest
-    needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
+    needs: [UnitTest]
     permissions:
       packages: write
     steps:
