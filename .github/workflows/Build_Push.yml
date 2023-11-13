@@ -38,7 +38,6 @@ jobs:
   UnitTest:
     runs-on: ubuntu-latest
     needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
-    container: python:3
     steps:
      - name: Unit Test app-test.py
        working-directory: ./src
