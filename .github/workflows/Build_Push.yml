@@ -44,7 +44,7 @@ jobs:
       #SENDS FAILED TO IMPORT TEST MODULE SRC/APP-TEST.PY
 
   GitLeaksCheck:
-    runs-on: ubuntnu-latest
+    runs-on: ubuntu-latest
     needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
     steps:
       - name: Checkout code
