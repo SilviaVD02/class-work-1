@@ -41,9 +41,8 @@ jobs:
     container: python:3
     steps:
      - name: Unit Test app-test.py
-       run: |
-         cd src
-         python3 -m unittest app-test.py 
+       working-directory: ./src
+       run: python3 -m unittest app-test.py 
       
       #SENDS FAILED TO IMPORT TEST MODULE SRC/APP-TEST.PY
 
