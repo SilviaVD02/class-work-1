@@ -40,7 +40,7 @@ jobs:
     needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
     steps:
      - name: Unit Test app-test.py
-       working-directory: src
+       # working-directory: src
        run: python3 -m unittest app-test.py 
       
       #SENDS FAILED TO IMPORT TEST MODULE SRC/APP-TEST.PY
