@@ -32,8 +32,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Markdown Files Check
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
+      - name: Markdown Files SEO Check
+        uses: zentered/markdown-seo-check@v1.0.0
 
   SnykTest:
     runs-on: ubuntu-latest
