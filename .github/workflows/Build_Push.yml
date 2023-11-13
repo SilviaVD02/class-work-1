@@ -28,6 +28,9 @@ jobs:
     steps:
       - name: Install CLI-Markdown
         run: npm i -g cli-markdown
+
+      - name: Clean npm cache
+        run: npm cache clean --force
         
       - name: Markdown Files Check
         run: npm run test
