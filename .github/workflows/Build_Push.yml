@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install CLI-Markdown
-        run: npm i cli-markdown
+        run:  npm uninstall -g create-react-app | npx create-react-app my-app | npm start
         
       - name: Markdown Files Check
         run: npm run test
