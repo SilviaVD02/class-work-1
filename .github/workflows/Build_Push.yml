@@ -42,10 +42,10 @@ jobs:
     steps:
     
      - name: Install Dependencies
-       run: pip3 install -r src/requirements.txt
+       run: pip3 install -r ./src/requirements.txt
        
      - name: Unit Test app-test.py
-       run: python3 -m unittest src/app-test.py 
+       run: python3 -m unittest ./src/app-test.py 
       
       #SENDS FAILED TO IMPORT TEST MODULE SRC/APP-TEST.PY
 
