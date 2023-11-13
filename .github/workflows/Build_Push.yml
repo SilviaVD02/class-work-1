@@ -34,6 +34,12 @@ jobs:
         
       - name: Markdown Files SEO Check
         uses: zentered/markdown-seo-check@v1.0.0
+        with: 
+          max_title_length: 100 # default is 70
+          # Maximum length for description
+          max_description_length: 30000# default is 150
+          # Maximum length for slug
+          max_slug_length: 100 # default is 100
 
   SnykTest:
     runs-on: ubuntu-latest
