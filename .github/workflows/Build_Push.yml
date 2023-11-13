@@ -41,7 +41,7 @@ jobs:
     steps:
      - name: Unit Test app-test.py
        # working-directory: src
-       run: python3 -m unittest app-test.py 
+       run: python3 -m unittest app_test.py 
       
       #SENDS FAILED TO IMPORT TEST MODULE SRC/APP-TEST.PY
 
