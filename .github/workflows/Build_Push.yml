@@ -26,8 +26,8 @@ jobs:
   MarkdownFilesCheck:
     runs-on: ubuntu-latest
     steps:
-     # - name: Install CLI-Markdown
-     #  run: npm i -g cli-markdown
+      - name: Install CLI-Markdown
+        run: npm i cli-markdown
         
       - name: Markdown Files Check
         run: npm run test
