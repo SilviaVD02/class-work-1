@@ -40,7 +40,8 @@ jobs:
     needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
     steps:
       - name: Unit Test app-test.py
-        run: python3 -m unittest src/app_test.py
+        run: python3 -m unittest src/
+        
 
   SnykTest:
     runs-on: ubuntu-latest
