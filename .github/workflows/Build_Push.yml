@@ -26,11 +26,8 @@ jobs:
   MarkdownFilesCheck:
     runs-on: ubuntu-latest
     steps:
-      - name: Install CLI-Markdown
-        run: npm i -g cli-markdown
-
-      - name: Delete Prev Log
-        run: rm /home/runner/.npm/_logs/2023-11-13T15_08_52_229Z-debug-0.log
+     # - name: Install CLI-Markdown
+     #  run: npm i -g cli-markdown
         
       - name: Markdown Files Check
         run: npm run test
