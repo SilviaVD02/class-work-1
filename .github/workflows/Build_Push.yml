@@ -15,10 +15,11 @@ jobs:
   Editor-Conf-Check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Editor-Conf file
-        uses: wow-rp-addons/actions-editorconfig-check@v1.0.1
-        with: 
-            files: .editorconfig 
+      - name: Install Editor-Conf-Checker
+        run: pip install editorconfig-checker
+
+      - name: Editor-Conf Check
+        run: editorconfig-checker
       
   SnykTest:
     runs-on: ubuntu-latest
