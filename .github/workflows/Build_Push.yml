@@ -10,7 +10,7 @@ jobs:
         run:  pip install flake8
         
       - name : Check code with Flake8
-        run: flake8 src/appy-test.py
+        run: flake8 src/app-test.py
       
   SnykTest:
     runs-on: ubuntu-latest
