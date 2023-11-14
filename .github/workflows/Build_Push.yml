@@ -65,25 +65,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  #DB-Migration-Test:
+  DB-Migration-Test:
   
-       # runs-on: ubuntu-latest
-        #needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
-        #steps:
-         # - name: DB Migrations FlywayCheck
-          #  uses: red-gate/flyway-hub-migration-test@v4
-           # with:
-              # The name of the Flyway Hub project to test
-            #  projectName: class-work-1
-              # The database engine that migrations should run against
-             # engine: SQL Server (v2019)
-              # The directories containing the migration scripts to run
-              #migrationDirs: sql
+    runs-on: ubuntu-latest
+    needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
+    steps:
+      - uses: actions/checkout/@v2
+      - name: Test migrations on Flyway Hub
+        uses: red-gate/flyway-hub-migration-test@v4
+        env: 
+          FLYWAYHUB_ACCESS_TOKEN: ${{ secrets.FLYWAY_HUB_ACCESS_TOKEN }}
+        with:
+          projectName: class-work-1
+          engine: sqlserver-19
+          migrationDirs: sql 
                     
   SnykTest:
     runs-on: ubuntu-latest
-    #needs: [UnitTest]
-    needs: [GitLeaksCheck, UnitTest] # DB-Migration-Test]
+    needs: [GitLeaksCheck, UnitTest, DB-Migration-Test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -98,8 +97,7 @@ jobs:
           
   SonarCloudTest:
     runs-on: ubuntu-latest
-    #needs: [UnitTest]
-    needs: [GitLeaksCheck, UnitTest] # DB-Migration-Test]
+    needs: [GitLeaksCheck, UnitTest, DB-Migration-Test]
     permissions:
       packages: write
     steps:
