@@ -38,10 +38,14 @@ jobs:
   UnitTest:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare repo
-        uses: actions/checkout@master
-      - name: Test
-        uses: onichandame/python-test-action@master
+     - name: Prepare repo
+       uses: actions/checkout@master
+       
+     - name : Set up Python
+       uses: actions/setup-python@v1
+       
+     - name: Test
+       run: python3 -m unittest src/app_test.py
 
   GitLeaksCheck:
     runs-on: ubuntu-latest
