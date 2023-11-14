@@ -68,6 +68,7 @@ jobs:
   DB-Migration-Test:
   
     runs-on: ubuntu-latest
+    needs: [Flake8Test, Editor-Conf-Check, MarkdownFilesCheck]
     services:
       postgres:
         image: postgres
