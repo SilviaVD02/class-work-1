@@ -48,6 +48,10 @@ python3 src/app.py
 - Scan the built Docker image with Trivy as part of the existing workflow
 - Publish the image to your personal DockerHub account
 
+### Additional practice
+
+- Create a docker compose file to locally test database migrations
+
 ### Bonus
 
 - Optimize the size of the Docker image. Use a more minimal base image.
