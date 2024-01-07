@@ -143,7 +143,6 @@ jobs:
         uses: aquasecurity/trivy-action@0.13.1
         with:
           image-ref: "my_first_app"
-          scan-ref: .  #its the default code
           exit-code: 1
           timeout: 3m0s
           vuln-type: "os,library" #optional, default
