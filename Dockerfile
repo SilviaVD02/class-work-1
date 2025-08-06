@@ -1,5 +1,5 @@
 # The base image
-FROM ubuntu:latest
+FROM ubuntu:24.10
 
 # Install python and pip
 RUN apt-get update -y
